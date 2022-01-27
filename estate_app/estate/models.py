@@ -16,13 +16,15 @@ class Alarm(models.Model):
 
 
 class Announcement(models.Model):
+    title = models.CharField(max_length=50)
     address = models.CharField(max_length=150)
     cost = models.IntegerField()
     square = models.FloatField()
     description = models.TextField(blank=True)
+    filters = models.TextField()
     contacts = models.CharField(max_length=30)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    pub_date = models.DateTimeField('date published')
+    pub_date = models.DateTimeField('date published', auto_now_add=True)
 
     def __str__(self):
         return self.description
