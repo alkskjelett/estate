@@ -3,8 +3,8 @@ from .models import *
 
 class Filter(filters.FilterSet):
     # filters = filters.ModelChoiceFilter(queryset=Filters.objects.all())
-    type = filters.ChoiceFilter(choices=HOUSE_TYPES)
-    heating = filters.ChoiceFilter(choices=HEATING_TYPES)
+    type = filters.TypedChoiceFilter(choices=HOUSE_TYPES)
+    heating = filters.TypedChoiceFilter(choices=HEATING_TYPES)
     fridge = filters.BooleanFilter()
     microwave = filters.BooleanFilter()
     washMachine = filters.BooleanFilter()
