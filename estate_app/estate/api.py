@@ -1,7 +1,7 @@
-from .models import *
 from rest_framework import viewsets, permissions
 from .serializers import *
 from rest_framework.generics import ListAPIView
+from .filters import *
 
 
 class AnnouncementViewSet(viewsets.ModelViewSet):
@@ -10,14 +10,15 @@ class AnnouncementViewSet(viewsets.ModelViewSet):
         permissions.AllowAny
     ]
     serializer_class = AnnouncementSerializer
+    filterset_class = AnnouncementFilter
 
 
-class PhotoViewSet(viewsets.ModelViewSet):
-    queryset = Photo.objects.all()
+class ImageViewSet(viewsets.ModelViewSet):
+    queryset = Image.objects.all()
     permissions_classes = [
         permissions.AllowAny
     ]
-    serializer_class = PhotoSerializer
+    serializer_class = ImageSerializer
 
 
 class ChatViewSet(viewsets.ModelViewSet):
@@ -58,3 +59,17 @@ class AlarmViewSet(viewsets.ModelViewSet):
         permissions.AllowAny
     ]
     serializer_class = AlarmSerializer
+
+
+class FiltersViewSet(viewsets.ModelViewSet):
+    queryset = Filters.objects.all()
+    permisson_choices = [
+        permissions.AllowAny
+    ]
+    serializer_class = FiltersSerializer
+    filterset_class = Filter
+
+    # def list(self, request):
+    #     queryset = Filters.objects.all()
+    #     serializer = FiltersSerializer(queryset, many=True)
+    #     return Response(serializer.data)

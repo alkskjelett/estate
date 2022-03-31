@@ -2,16 +2,15 @@ from rest_framework import serializers
 from .models import *
 
 
-
 class AnnouncementSerializer(serializers.ModelSerializer):
     class Meta:
         model = Announcement
         fields = '__all__'
 
 
-class PhotoSerializer(serializers.ModelSerializer):
+class ImageSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Photo
+        model = Image
         fields ='__all__'
 
 
@@ -36,4 +35,11 @@ class ProfileSerializer(serializers.ModelSerializer):
 class AlarmSerializer(serializers.ModelSerializer):
     class Meta:
         model = Alarm
+        fields = '__all__'
+
+
+class FiltersSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Filters
         fields = '__all__'

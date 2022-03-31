@@ -16,6 +16,8 @@ from .models import *
 admin.site.register(Announcement)
 admin.site.register(Profile)
 admin.site.register(Alarm)
-admin.site.register(Photo)
+admin.site.register(Image)
 admin.site.register(Chat)
 admin.site.register(Message)
+admin.site.register(Filters)
+
