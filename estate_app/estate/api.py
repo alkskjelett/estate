@@ -2,6 +2,8 @@ from rest_framework import viewsets, permissions
 from .serializers import *
 from rest_framework.generics import ListAPIView
 from .filters import *
+from django_filters.rest_framework  import DjangoFilterBackend
+from estate import services
 
 
 class AnnouncementViewSet(viewsets.ModelViewSet):
@@ -10,7 +12,9 @@ class AnnouncementViewSet(viewsets.ModelViewSet):
         permissions.AllowAny
     ]
     serializer_class = AnnouncementSerializer
-    filterset_class = AnnouncementFilter
+    filter_backends = [DjangoFilterBackend]
+    filter_fields = announcementFilterFields
+
 
 
 class ImageViewSet(viewsets.ModelViewSet):
@@ -67,9 +71,3 @@ class FiltersViewSet(viewsets.ModelViewSet):
         permissions.AllowAny
     ]
     serializer_class = FiltersSerializer
-    filterset_class = Filter
-
-    # def list(self, request):
-    #     queryset = Filters.objects.all()
-    #     serializer = FiltersSerializer(queryset, many=True)
-    #     return Response(serializer.data)

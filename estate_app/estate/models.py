@@ -4,7 +4,7 @@ from .services import *
 
 class Profile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    photoPath = models.CharField(max_length=255)
+    image = models.ImageField(upload_to=user_directory_path, default="media/user/default_avatar")
     alarm = models.ForeignKey("Alarm", on_delete=models.CASCADE)
 
     def __str__(self):
@@ -30,8 +30,8 @@ class Announcement(models.Model):
 
 
 class Image(models.Model):
-    imagePath = models.CharField(max_length=255, blank=True)
-    announcement = models.ForeignKey("Announcement", on_delete=models.CASCADE)
+    image = models.ImageField(upload_to=announcement_directory_path)
+    announcement= models.ForeignKey(Announcement, on_delete=models.CASCADE)
 
 
 class Chat(models.Model):
