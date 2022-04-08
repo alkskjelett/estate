@@ -1,0 +1,1 @@
+web: gunicorn estate_app.wsgi --log-file -
